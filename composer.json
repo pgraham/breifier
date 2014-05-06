@@ -1,0 +1,7 @@
+{
+	"name": "zeptech/breifier",
+	"version": "0.0.1",
+	"require": {
+		"php": ">=5.5.0"
+	}
+}
