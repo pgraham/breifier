@@ -20,14 +20,19 @@ use zpt\breifier\Breifier;
 class BreiferTest extends TestCase {
 
 	private $targetPath;
+	private $customTarget;
 
 	protected function setUp() {
 		$this->targetPath = __DIR__ . '/target';
+		$this->customTarget = __DIR__ . '/target-custom';
 
 		if (file_exists($this->targetPath)) {
 			exec("rm -r $this->targetPath");
 		}
 
+		if (file_exists($this->customTarget)) {
+			exec("rm -r $this->customTarget");
+		}
 	}
 
 	/**
@@ -43,5 +48,15 @@ class BreiferTest extends TestCase {
 
 		$this->assertFileExists($this->targetPath);
 		$this->assertTrue(is_writeable($this->targetPath));
+	}
+
+	public function testSpecifyTargetAbsolute() {
+		$runner = new Breifier(__DIR__);
+
+		$runner->setTarget($this->customTarget);
+		$runner->run();
+
+		$this->assertFileExists($this->customTarget);
+		$this->assertTrue(is_writeable($this->customTarget));
 	}
 }

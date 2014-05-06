@@ -18,15 +18,20 @@ use PHPUnit_Framework_TestCase;
  */
 class Breifier {
 
+	private $target;
+
 	public function __construct($siteRoot) {
+		$this->target = getcwd() . '/target';
 	}
 
 	public function run() {
-		$target = getcwd() . '/target';
-
-		if (file_exists($target)) {
-			exec("rm -r $target");
+		if (file_exists($this->target)) {
+			exec("rm -r $this->target");
 		}
-		mkdir($target, 0755, true);
+		mkdir($this->target, 0755, true);
+	}
+
+	public function setTarget($target) {
+		$this->target = $target;
 	}
 }
