@@ -21,6 +21,7 @@ class Breifier {
 	private $target;
 
 	public function __construct($siteRoot) {
+		$this->siteRoot = $siteRoot;
 		$this->target = getcwd() . '/target';
 	}
 
@@ -32,6 +33,10 @@ class Breifier {
 	}
 
 	public function setTarget($target) {
-		$this->target = $target;
+		if (strpos($target, '/') === 0) {
+			$this->target = $target;
+		} else {
+			$this->target = $this->siteRoot . '/' . $target;
+		}
 	}
 }
