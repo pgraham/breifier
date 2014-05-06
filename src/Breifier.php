@@ -7,18 +7,18 @@
  * This file is part of breifier. For the full copyright and license information
  * please view the LICENSE file that was distributed with this source code.
  */
-namespace zpt\breifier\test;
+namespace zpt\breifier;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit_Framework_TestCase;
 
 /**
- * This class tests the core breifier functionality.
+ * Breifier runner.
  *
  * @author Philip Graham <philip@zeptech.ca>
  */
-class BreifierTest extends TestCase {
+class Breifier {
 
-	public function testRun() {
+	public function run() {
 
 	}
 }
