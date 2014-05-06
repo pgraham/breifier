@@ -18,6 +18,9 @@ use PHPUnit_Framework_TestCase;
  */
 class Breifier {
 
+	public function __construct($siteRoot) {
+	}
+
 	public function run() {
 		$target = getcwd() . '/target';
 

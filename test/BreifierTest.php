@@ -27,6 +27,14 @@ class BreiferTest extends TestCase {
 		if (file_exists($this->targetPath)) {
 			exec("rm -r $this->targetPath");
 		}
+
+	}
+
+	/**
+	 * @expectedException PHPUnit_Framework_Error_Warning
+	 */
+	public function testNoSiteRoot() {
+		$runner = new Breifier();
 	}
 
 	public function testTargetCreated() {
