@@ -19,8 +19,21 @@ use zpt\breifier\Breifier;
  */
 class BreiferTest extends TestCase {
 
-	public function testRun() {
-		$runner = new Breifier();
+	private $targetPath;
+
+	protected function setUp() {
+		$this->targetPath = __DIR__ . '/target';
+
+		if (file_exists($this->targetPath)) {
+			exec("rm -r $this->targetPath");
+		}
+	}
+
+	public function testTargetCreated() {
+		$runner = new Breifier(__DIR__);
 		$runner->run();
+
+		$this->assertFileExists($this->targetPath);
+		$this->assertTrue(is_writeable($this->targetPath));
 	}
 }

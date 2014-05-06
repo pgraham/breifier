@@ -19,6 +19,11 @@ use PHPUnit_Framework_TestCase;
 class Breifier {
 
 	public function run() {
+		$target = getcwd() . '/target';
 
+		if (file_exists($target)) {
+			exec("rm -r $target");
+		}
+		mkdir($target, 0755, true);
 	}
 }
